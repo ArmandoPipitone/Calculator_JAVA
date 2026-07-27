@@ -29,7 +29,7 @@ Il progetto segue una struttura modulare e orientata agli oggetti con separazion
 
 ```text
 ├── Main.java              # Entry point dell'applicazione
-├── | src/calculator/
+└── | src/calculator/
     ├── CalcolatriceGUI.java   # Interfaccia grafica (Swing) e gestione eventi
     ├── MathEngine.java        # Entry point/Facade per la logica di calcolo
     ├── ExpressionParser.java  # Parser ricorsivo a discesa per le espressioni
