@@ -1,18 +1,30 @@
 # 🧮 Calculator_JAVA (Java Swing)
 
-Una calcolatrice desktop sviluppata in Java con interfaccia grafica Swing.
-Il progetto include un **motore di parsing ricorsivo personalizzato** per la gestione di espressioni matematiche complesse, supporto completo alla tastiera globale e un sistema di temi dinamici (Dark/Light).
+Applicazione desktop per una calcolatrice matematica sviluppata in **Java 17+** con interfaccia grafica **Swing**.
+Il progetto include un **Parser a Discesa Ricorsiva (Recursive Descent Parser)** scritto da zero per la valutazione immediata di espressioni matematiche complesse, supporto completo da tastiera, moltiplicazione implicita e passaggio dinamico tra temi (Dark / Light).
 
 ---
 
 ## ✨ Caratteristiche Principali
 
-* **Parsing Ricorsivo Personalizzato:** Gestione avanzata di espressioni matematiche complesse con precedenza degli operatori (`*`, `/`, `+`, `-`), parentesi, moltiplicazione implicita e segni unari.
-* **Input Globale da Tastiera:** Mappatura completa degli input tramite `InputMap` e `ActionMap`, permettendo l'uso della tastiera indipendentemente dal focus sul campo di testo.
-* **Temi Dinamici (Dark/Light):** Sistema di tematizzazione live per cambiare stile visivo all'interfaccia in tempo reale con un click.
-* **Gestione Errori Robusta:** Sistema dedicato con popup informativi e feedback visivo per divisione per zero, errori nelle parentesi e formattazione numerica non valida.
+* **Recursive Descent Math Engine:** Valutazione di espressioni matematiche tramite analisi sintattica basata su grammatica formale (gestione nativa della precedenza degli operatori, parentesi annidate e numeri decimali).
+* **Moltiplicazione Implicita:** Riconoscimento automatico del prodotto sottinteso, ad esempio `5(2+3)` o `2.5(4)`.
+* **Global Key Bindings:** Mappatura completa dell'input da tastiera tramite `InputMap` e `ActionMap` a livello di `JRootPane`, garantendo la cattura dei tasti indipendentemente dal focus dei componenti.
+* **Tema Dinamico Dark/Light:** Cambio di tema istantaneo in runtime con aggiornamento dell'albero dei componenti (`SwingUtilities.updateComponentTreeUI`).
+* **Gestione Centralizzata degli Errori:** Sistema di diagnostica personalizzato (`MyErrorManager`) per la gestione e segnalazione puntuale degli errori (divisione per zero, parentesi non bilanciate, sintassi o numeri non validi).
 * **UI Clean & Responsive:** Formattazione intelligente dei risultati (azzeramento dei decimali superflui) e layout intuitivo.
 
+---
+
+## 📐 Architettura del Parser (Grammatica LL)
+
+Il motore matematico `MathEngine` delega l'analisi alla classe `ExpressionParser` (estensione di `StringParser`), che valuta la stringa in un singolo passaggio senza librerie esterne. L'analisi rispetta la seguente grammatica formale:
+
+```text
+expression = term (('+' | '-') term)*
+term       = factor (('*' | '/') factor)*
+factor     = ('+' | '-') factor | '(' expression ')' | number
+```
 ---
 
 ## 🛠️ Tech Stack & Requisiti
@@ -28,12 +40,14 @@ Il progetto include un **motore di parsing ricorsivo personalizzato** per la ges
 Il progetto segue una struttura modulare e orientata agli oggetti con separazione delle responsabilità:
 
 ```text
-├── Main.java              # Entry point dell'applicazione
-└── | src/calculator/
-    ├── CalcolatriceGUI.java   # Interfaccia grafica (Swing) e gestione eventi
-    ├── MathEngine.java        # Entry point/Facade per la logica di calcolo
-    ├── ExpressionParser.java  # Parser ricorsivo a discesa per le espressioni
-    ├── StringParser.java      # Base parser per l'analisi dei caratteri
-    ├── MyErrorManager.java    # Gestione centralizzata e dialoghi di errore
-    ├── Theme.java             # Gestione dei colori e dei temi (Dark/Light)
-    └── UIElement.java         # Componente per l'applicazione dinamica del tema
+Calcolatrice_Java/
+│
+├── Main.java                      # Entry point principale con inizializzazione sull'Event Dispatch Thread (EDT)
+└── src/
+    └── calculator/
+        ├── CalcolatriceGUI.java   # Interfaccia GUI Swing, Key Bindings e gestione Temi (Theme, UIElement)
+        ├── StringParser.java      # Classe base astratta per l'analisi del flusso di caratteri
+        ├── ExpressionParser.java  # Implementazione del Parser a Discesa Ricorsiva
+        ├── MathEngine.java        # Facade pubblica per l'avvio della valutazione dell'espressione
+        └── MyErrorManager.java    # Gestore e visualizzatore di popup di errore (JOptionPane)
+```
