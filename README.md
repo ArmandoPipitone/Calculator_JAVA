@@ -28,12 +28,12 @@ Il progetto include un **motore di parsing ricorsivo personalizzato** per la ges
 Il progetto segue una struttura modulare e orientata agli oggetti con separazione delle responsabilità:
 
 ```text
-src/
 ├── Main.java              # Entry point dell'applicazione
-├── CalcolatriceGUI.java   # Interfaccia grafica (Swing) e gestione eventi
-├── MathEngine.java        # Entry point/Facade per la logica di calcolo
-├── ExpressionParser.java  # Parser ricorsivo a discesa per le espressioni
-├── StringParser.java      # Base parser per l'analisi dei caratteri
-├── MyErrorManager.java    # Gestione centralizzata e dialoghi di errore
-├── Theme.java             # Gestione dei colori e dei temi (Dark/Light)
-└── UIElement.java         # Componente per l'applicazione dinamica del tema
+├── | src/calculator/
+    ├── CalcolatriceGUI.java   # Interfaccia grafica (Swing) e gestione eventi
+    ├── MathEngine.java        # Entry point/Facade per la logica di calcolo
+    ├── ExpressionParser.java  # Parser ricorsivo a discesa per le espressioni
+    ├── StringParser.java      # Base parser per l'analisi dei caratteri
+    ├── MyErrorManager.java    # Gestione centralizzata e dialoghi di errore
+    ├── Theme.java             # Gestione dei colori e dei temi (Dark/Light)
+    └── UIElement.java         # Componente per l'applicazione dinamica del tema
