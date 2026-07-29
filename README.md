@@ -55,3 +55,27 @@ Calculator_JAVA/
             ├──📜 StringParser.java         # Parser di basso livello per lo scorrimento dei caratteri
             └──📜 MyErrorManager.java       # Gestione centralizzata dei messaggi d'errore
 ```
+
+---
+
+## 🚀 Come Compilare ed Eseguire
+
+```bash
+# Compilazione
+cd [Your_Path]/Calcolatrice_Java
+javac -d bin src/calculator/*.java Main.java
+
+# Esecuzione
+java -cp bin Main
+```
+---
+## ✂️ Screenshot
+### Temi
+![alt text](image.png)
+![alt text](image-1.png)
+
+### Errori
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+---
