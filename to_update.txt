@@ -1,0 +1,3 @@
+Aggiungere ulteriori funzioni matematiche (potenza, radice, trigonometria etc...)
+Inserire una cronologia
+Cercare di rimuovere parentesi superflue per limitare i potenziali overflow
