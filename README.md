@@ -1,21 +1,35 @@
 # 🧮 Calculator_JAVA (Java Swing)
 
-Applicazione desktop per una calcolatrice matematica sviluppata in **Java 17+** con interfaccia grafica **Swing** con supporto all'input da tastiera, gestione temi (Chiaro/Scuro) ed elaborazione di espressioni matematiche complesse tramite un parser a discesa ricorsiva (**Recursive Descent Parser**) realizzato appositamente.
+Applicazione desktop per una calcolatrice matematica sviluppata in **Java 17+** con interfaccia grafica **Swing** e supporto all'input da tastiera, gestione temi (Chiaro/Scuro) ed elaborazione di espressioni matematiche complesse tramite un parser a discesa ricorsiva (**Recursive Descent Parser**) realizzato appositamente e facilmente estendibile.
 
-A differenza delle calcolatrici semplici che eseguono le operazioni in sequenza immediata, questo software valuta l'intera stringa inserita rispettando le precedenze algebriche (parentesi, moltiplicazioni/divisioni e somme/sottrazioni) e gestisce la sintassi per la moltiplicazione implicita.
+A differenza delle calcolatrici semplici che eseguono le operazioni in sequenza immediata, questo software valuta l'intera stringa inserita rispettando le precedenze algebriche (parentesi, moltiplicazioni/divisioni e somme/sottrazioni), inoltre gestisce la sintassi per la moltiplicazione implicita.
 
 ---
 
 ## ✨ Caratteristiche 
 
-* **Interfaccia Grafica (GUI) Swing:** Layout pulito a griglia (5x4) con display dedicato e pulsante dedicato per il cambio tema.
-* **Tema Dinamico Dark/Light:** Cambio di tema istantaneo in runtime con aggiornamento dell'albero dei componenti (`SwingUtilities.updateComponentTreeUI`).
-* **Gestione Centralizzata degli Errori:** Sistema di diagnostica personalizzato (`MyErrorManager`) per la gestione e segnalazione tramite popup puntuale degli errori (divisione per zero, parentesi non bilanciate, sintassi o numeri non validi).
-* **Recursive Descent Math Engine:** Valutazione di espressioni matematiche tramite analisi sintattica, senza l'uso di librerie esterne, basata su grammatica formale (in modo da avere una gestione nativa della precedenza degli operatori, parentesi annidate e numeri decimali).
-* **Moltiplicazione Implicita:** Riconoscimento automatico del prodotto sottinteso, ad esempio `5(2+3)` o `2.5(4)`.
-* **Global Key Bindings:** Mappatura dell'input da tastiera tramite `InputMap` e `ActionMap` a livello di `JRootPane`, garantendo la cattura dei tasti (compresi tasti Invio per il calcolo ed Elimina/Backspace per cancellare l'ultimo carattere) indipendentemente dal focus dei componenti.
-* **Estendibilità del Parser:** La classe base `StringParser` astra le dinamiche di lettura del testo, rendendo `ExpressionParser` facilmente estendibile per supportare funzioni matematiche aggiuntive (es. radici, potenze, funzioni trigonometriche).
-* **UI Clean & Responsive:** Formattazione intelligente dei risultati (azzeramento dei decimali superflui) e layout intuitivo.
+* **Interfaccia Grafica (GUI) Swing:**
+    Layout pulito a griglia (5x4) con display dedicato e pulsante dedicato per il cambio tema.
+
+* **Tema Dinamico Dark/Light:**
+    Cambio di tema istantaneo in runtime con aggiornamento dell'albero dei componenti (`SwingUtilities.updateComponentTreeUI`).
+
+* **Gestione Centralizzata degli Errori:** 
+    Sistema di diagnostica personalizzato (`MyErrorManager`) per la gestione e segnalazione tramite popup puntuale degli errori (divisione per zero, parentesi non bilanciate, sintassi o numeri non validi).
+
+* **Recursive Descent Math Engine:**
+    Valutazione di espressioni matematiche tramite analisi sintattica, senza l'uso di librerie esterne, basata su grammatica formale (in modo da avere una gestione nativa della precedenza degli operatori, parentesi annidate e numeri decimali).
+* **Moltiplicazione Implicita:**
+    Riconoscimento automatico del prodotto sottinteso, ad esempio `5(2+3)` o `2.5(4)`.
+
+* **Global Key Bindings:**
+    Mappatura dell'input da tastiera tramite `InputMap` e `ActionMap` a livello di `JRootPane`, garantendo la cattura dei tasti (compresi tasti Invio per il calcolo ed Elimina/Backspace per cancellare l'ultimo carattere) indipendentemente dal focus dei componenti.
+
+* **Estendibilità del Parser:**
+    La classe base `StringParser` astra le dinamiche di lettura del testo, rendendo `ExpressionParser` facilmente estendibile per supportare funzioni matematiche aggiuntive (es. radici, potenze, funzioni trigonometriche).
+
+* **UI Clean & Responsive:**
+    Formattazione intelligente dei risultati (azzeramento dei decimali superflui) e layout intuitivo.
 
 ---
 
